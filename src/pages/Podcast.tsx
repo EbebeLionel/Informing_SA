@@ -1,69 +1,41 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import styles from './Podcast.module.css'
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 
-const EPISODE_FORMATS = [
+const CHILL_EPISODES = [
   {
-    tag: 'ChiLL',
-    tagClass: 'tagChill',
-    title: 'Academic & Expert Conversations',
-    description:
-      'Deep-dive sessions with professors, authors, clinicians, and researchers. These episodes unpack the theory and evidence behind relationship dynamics — what the data says, what the literature argues, and what the experts recommend.',
-    topics: [
-      'Attachment theory & adult relationships',
-      'The psychology of forgiveness',
-      'Cultural scripts around gender roles',
-      'Clinical perspectives on intimacy',
-    ],
+    number: '001',
+    title: 'The Body Keeps the Score: Why the Body Remembers What the Mind Wants to Forget',
+    desc: "A conversation on Bessel van der Kolk's work and the unsettling reality that trauma does not simply disappear with time. Why does the nervous system hold onto pain, and why is emotional safety essential for healing?",
   },
   {
-    tag: 'ChiLLY',
-    tagClass: 'tagChilly',
-    title: 'Controversial Topics, Critically Examined',
-    description:
-      'No topic is off-limits. These episodes tackle the questions people whisper about — abstinence, celibacy, submission, order, power, and forgiveness — brought into the open and examined with honesty and nuance.',
-    topics: [
-      'Abstinence & celibacy in modern dating',
-      'Submission and power dynamics',
-      'Forgiveness — obligation or choice?',
-      'Order in relationships',
-    ],
+    number: '002',
+    title: 'Safe People: Why Some Relationships Help You Grow and Others Quietly Destroy You',
+    desc: "Drawing from Dr. Henry Cloud's book, this episode asks a deceptively simple question: how do you actually identify safe people? What does it mean to invite honest feedback from the people closest to you?",
+  },
+  {
+    number: '003',
+    title: 'Boundaries: Why Love Sometimes Looks Like Letting People Face Their Own Consequences',
+    desc: "Inspired by Dr. Henry Cloud's work on boundaries, this episode explores the difficult truth that love is not always rescue. When does helping someone actually prevent them from growing?",
   },
 ]
 
-const PLACEHOLDER_EPISODES = [
+const CHILLY_EPISODES = [
   {
-    format: 'ChiLL',
     number: '001',
-    title: 'Attachment Styles & Why We Love the Way We Do',
-    guest: 'Dr. Sarah Nkemdirim — Clinical Psychologist',
-    duration: '52 min',
-    desc: 'An evidence-based conversation on how early attachment shapes our adult romantic bonds — and whether we can rewire them.',
+    title: 'Waiting Is Not Just About Marriage',
+    desc: "Everyone talks about waiting for marriage, but what if the deeper question is about renewing the mind before sex? Where do our ideas of intimacy actually come from, and who shaped them?",
   },
   {
-    format: 'ChiLLY',
     number: '002',
-    title: 'The Celibacy Conversation Nobody Is Having',
-    guest: 'Open panel discussion',
-    duration: '48 min',
-    desc: 'Is choosing celibacy radical self-preservation, cultural conditioning, or both? Three women share their experiences and reasoning.',
+    title: 'The Secret Trades We Make for Love',
+    desc: "When people compromise their self worth for affection, attention, or validation, what exactly is being exchanged? Are there emotional or spiritual consequences to the bargains we make in relationships?",
   },
   {
-    format: 'ChiLL',
     number: '003',
-    title: 'Power, Control & the Neuroscience of Jealousy',
-    guest: 'Prof. Amara Osei — Behavioural Neuroscience',
-    duration: '61 min',
-    desc: 'What happens in the brain during jealousy, and how does it intersect with control dynamics in romantic relationships?',
-  },
-  {
-    format: 'ChiLLY',
-    number: '004',
-    title: 'Submission: Faith, Feminism & Partnership',
-    guest: 'Roundtable — Theologian, Activist, Counsellor',
-    duration: '55 min',
-    desc: 'A charged conversation on what submission means across religious, feminist, and practical frameworks — and who gets to define it.',
+    title: 'Kinks, Power, and Desire',
+    desc: "Where do kinks really come from? Are they harmless curiosities, expressions of imagination, or do they sometimes reflect deeper psychological and relational dynamics?",
   },
 ]
 
@@ -88,36 +60,27 @@ const FadeIn = ({ children, delay = '0s' }: { children: React.ReactNode; delay?:
   )
 }
 
-const EpisodeCard = ({ ep, index }: { ep: typeof PLACEHOLDER_EPISODES[0]; index: number }) => {
-  const [expanded, setExpanded] = useState(false)
-  const isChilly = ep.format === 'ChiLLY'
+interface ConvoCardProps {
+  number: string
+  title: string
+  desc: string
+  format: 'ChiLL' | 'ChiLLY'
+  index: number
+}
+
+const ConvoCard = ({ number, title, desc, format, index }: ConvoCardProps) => {
+  const isChilly = format === 'ChiLLY'
   return (
-    <FadeIn delay={`${index * 0.08}s`}>
-      <div className={`${styles.episodeCard} ${isChilly ? styles.episodeChilly : styles.episodeChill}`}>
-        <div className={styles.episodeTop}>
-          <span className={`${styles.episodeTag} ${isChilly ? styles.tagChilly : styles.tagChill}`}>
-            {ep.format}
+    <FadeIn delay={`${index * 0.1}s`}>
+      <div className={`${styles.convoCard} ${isChilly ? styles.convoChilly : styles.convoChill}`}>
+        <div className={styles.convoTop}>
+          <span className={`${styles.convoTag} ${isChilly ? styles.tagChilly : styles.tagChill}`}>
+            {format}
           </span>
-          <span className={styles.episodeNumber}>EP. {ep.number}</span>
-          <span className={styles.episodeDuration}>{ep.duration}</span>
+          <span className={styles.convoNumber}>{number}</span>
         </div>
-        <h3 className={styles.episodeTitle}>{ep.title}</h3>
-        <p className={styles.episodeGuest}>{ep.guest}</p>
-        {expanded && <p className={styles.episodeDesc}>{ep.desc}</p>}
-        <div className={styles.episodeActions}>
-          <button className={styles.playBtn} aria-label="Play episode">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
-              <polygon points="2,1 13,7 2,13"/>
-            </svg>
-            Play
-          </button>
-          <button
-            className={styles.expandBtn}
-            onClick={() => setExpanded(v => !v)}
-          >
-            {expanded ? 'Less ↑' : 'More ↓'}
-          </button>
-        </div>
+        <h3 className={styles.convoTitle}>{title}</h3>
+        <p className={styles.convoDesc}>{desc}</p>
       </div>
     </FadeIn>
   )
@@ -135,15 +98,15 @@ const Podcast = () => (
         <div className={styles.heroScrim} />
       </div>
       <div className={styles.heroContent}>
-        <p className={styles.heroEyebrow}>An Informing S.A. Podcast · A H Studios Production</p>
+        <p className={styles.heroEyebrow}>An Informing S.A. Podcast</p>
         <h1 className={styles.heroTitle}>
           Chi<span className={styles.titleLL}>LL</span><span className={styles.titleY}>Y</span> Talks
         </h1>
         <p className={styles.heroTagline}>
-          A H-Studios Production
+          <strong>An H-Studios Production</strong>
         </p>
         <div className={styles.heroCtas}>
-          <a className={styles.ctaPrimary} href="#episodes">Browse Episodes</a>
+          <a className={styles.ctaPrimary} href="#conversations">Explore Conversations</a>
           <a className={styles.ctaSecondary} href="#subscribe">Subscribe</a>
         </div>
       </div>
@@ -152,77 +115,101 @@ const Podcast = () => (
       </div>
     </section>
 
-    {/* ── Mission ── */}
+    {/* ── About ── */}
     <section className={styles.mission}>
       <div className={styles.missionInner}>
         <FadeIn>
-          <p className={styles.missionLabel}>Our Mission</p>
+          <p className={styles.missionLabel}>About</p>
           <h2 className={styles.missionTitle}>
-            Fostering healthy relationships through honest, research-informed dialogue.
+            Where serious inquiry and candid conversation about relationships exist side by side.
           </h2>
           <p className={styles.missionBody}>
-            ChiLLy Talks advances the mission of Informing S.A. with a particular focus on women
-            ages 18–35. Through expert conversations and critical engagement with controversial
-            topics, we invite listeners to meditate on the social, psychological, and cultural
-            forces that shape contemporary relationships.
+            ChiLLy Talks is a podcast advancing the mission of Informing S.A. to foster healthy interpersonal
+            relationships, with a particular focus on women ages 18 to 35, by alternating between two formats:
+            ChiLL and ChiLLY. ChiLL episodes feature conversations with professors, academics, and authors who
+            explore the deeper foundations of relationships. What are the true components of trust? How do
+            psychology, philosophy, and research help us understand attachment, trauma, and emotional intimacy?
+          </p>
+          <p className={styles.missionBody} style={{ marginTop: '16px' }}>
+            ChiLLY episodes step into more provocative territory. What are healthy and unhealthy kinks? How do
+            desire, power, and personal experience shape sexuality? What does it mean to renew the mind before
+            sex and approach intimacy with intention and reflection? How does sex affect the soul, and what
+            impact might that have on a person's overall flourishing and prosperity? Thoughtful, curious, and
+            occasionally provocative, ChiLLy Talks creates a space where serious inquiry and candid
+            conversations about relationships can exist side by side.
           </p>
         </FadeIn>
       </div>
     </section>
 
-    {/* ── Two formats ── */}
-    <section className={styles.formats}>
-      <div className={styles.formatsInner}>
+    {/* ── Two formats intro ── */}
+    <section className={styles.formatsIntro}>
+      <div className={styles.formatsIntroInner}>
         <FadeIn>
           <p className={styles.sectionLabel}>Two Formats. One Conversation.</p>
         </FadeIn>
-        <div className={styles.formatsGrid}>
-          {EPISODE_FORMATS.map((f, i) => (
-            <FadeIn key={f.tag} delay={`${i * 0.12}s`}>
-              <div className={styles.formatCard}>
-                <span className={`${styles.formatTag} ${styles[f.tagClass as keyof typeof styles]}`}>
-                  {f.tag}
-                </span>
-                <h3 className={styles.formatTitle}>{f.title}</h3>
-                <p className={styles.formatDesc}>{f.description}</p>
-                <ul className={styles.formatTopics}>
-                  {f.topics.map(t => (
-                    <li key={t}>
-                      <span className={styles.topicDot} />
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </FadeIn>
-          ))}
+        <div className={styles.formatsIntroGrid}>
+          <FadeIn delay="0s">
+            <div className={styles.formatIntroCard}>
+              <span className={`${styles.formatIntroTag} ${styles.tagChill}`}>ChiLL</span>
+              <p className={styles.formatIntroDesc}>
+                Academic conversations with professors, authors, and clinicians — unpacking the research
+                and theory behind attachment, trauma, trust, and emotional intimacy.
+              </p>
+            </div>
+          </FadeIn>
+          <FadeIn delay="0.12s">
+            <div className={styles.formatIntroCard}>
+              <span className={`${styles.formatIntroTag} ${styles.tagChilly}`}>ChiLLY</span>
+              <p className={styles.formatIntroDesc}>
+                Provocative, candid discussions on kinks, desire, power, celibacy, and the spiritual
+                dimensions of intimacy — the conversations people are having privately, brought into the open.
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </div>
     </section>
 
-    {/* ── Episodes ── */}
-    <section className={styles.episodes} id="episodes">
-      <div className={styles.episodesInner}>
+    {/* ── Conversations ── */}
+    <section className={styles.conversations} id="conversations">
+      <div className={styles.conversationsInner}>
+
+        {/* ChiLL block */}
         <FadeIn>
-          <p className={styles.sectionLabel}>Latest Episodes</p>
-          <h2 className={styles.episodesTitle}>Start Listening</h2>
+          <div className={styles.formatBlockHeader}>
+            <span className={`${styles.blockTag} ${styles.tagChill}`}>ChiLL</span>
+            <h2 className={styles.blockTitle}>Academic Conversations</h2>
+            <p className={styles.blockSubtitle}>
+              Research-informed dialogue with experts, authors, and clinicians on the foundations of healthy relationships.
+            </p>
+          </div>
         </FadeIn>
-        <div className={styles.episodesGrid}>
-          {PLACEHOLDER_EPISODES.map((ep, i) => (
-            <EpisodeCard key={ep.number} ep={ep} index={i} />
+        <div className={styles.convoGrid}>
+          {CHILL_EPISODES.map((ep, i) => (
+            <ConvoCard key={ep.number} {...ep} format="ChiLL" index={i} />
           ))}
         </div>
-      </div>
-    </section>
 
-    {/* ── Quote ── */}
-    <section className={styles.quoteBand}>
-      <FadeIn>
-        <blockquote className={styles.quoteText}>
-          "We don't just talk about relationships — we interrogate them."
-        </blockquote>
-        <p className={styles.quoteAttr}>— ChiLLy Talks</p>
-      </FadeIn>
+        <div className={styles.formatDivider} />
+
+        {/* ChiLLY block */}
+        <FadeIn>
+          <div className={styles.formatBlockHeader}>
+            <span className={`${styles.blockTag} ${styles.tagChilly}`}>ChiLLY</span>
+            <h2 className={styles.blockTitle}>Provocative Conversations</h2>
+            <p className={styles.blockSubtitle}>
+              Candid, critical discussions on desire, power, sexuality, and the unspoken dynamics of intimacy.
+            </p>
+          </div>
+        </FadeIn>
+        <div className={styles.convoGrid}>
+          {CHILLY_EPISODES.map((ep, i) => (
+            <ConvoCard key={ep.number} {...ep} format="ChiLLY" index={i} />
+          ))}
+        </div>
+
+      </div>
     </section>
 
     {/* ── Subscribe ── */}
@@ -252,7 +239,12 @@ const Podcast = () => (
         <a href="/podcast">Podcast</a>
         <a href="/about#contact">Contact</a>
       </nav>
-      <p className={styles.footerCopy}>© 2025 Informing S.A. · Kiss the Mirror</p>
+      <div className={styles.footerRight}>
+        <a href="mailto:info@informingsa.com" className={styles.footerEmail}>
+          info@informingsa.com
+        </a>
+        <p className={styles.footerCopy}>© 2025 Informing S.A. · Kiss the Mirror</p>
+      </div>
     </footer>
 
   </main>

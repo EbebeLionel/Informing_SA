@@ -12,7 +12,7 @@
 /* ── Page wrapper ─────────────────────────────────────────── */
 .page {
   min-height: 100vh;
-  padding-top: 72px; /* header height */
+  padding-top: 72px;
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -86,9 +86,7 @@
   letter-spacing: -0.01em;
 }
 
-.titleLL {
-  color: #ffffff;
-}
+.titleLL { color: #ffffff; }
 
 .titleY {
   color: var(--crimson);
@@ -97,11 +95,17 @@
 
 .heroTagline {
   font-size: clamp(14px, 1.8vw, 18px);
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.7;
   margin-bottom: 40px;
   font-style: italic;
+}
+
+.heroTagline strong {
+  font-weight: 700;
+  font-style: normal;
+  color: #ffffff;
 }
 
 .heroCtas {
@@ -160,7 +164,7 @@
 }
 
 /* ════════════════════════════════════════════════════════════
-   SHARED SECTION LABEL
+   SHARED LABELS
 ════════════════════════════════════════════════════════════ */
 .sectionLabel {
   font-size: 9px;
@@ -172,7 +176,7 @@
 }
 
 /* ════════════════════════════════════════════════════════════
-   MISSION
+   ABOUT
 ════════════════════════════════════════════════════════════ */
 .mission {
   padding: 100px 64px;
@@ -180,69 +184,73 @@
 }
 
 .missionInner {
-  max-width: 760px;
+  max-width: 780px;
   margin: 0 auto;
   text-align: center;
 }
 
+.missionLabel {
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--rose-muted);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
 .missionTitle {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(26px, 3.2vw, 42px);
+  font-size: clamp(24px, 3vw, 38px);
   font-weight: 700;
   color: var(--crimson);
-  line-height: 1.25;
+  line-height: 1.3;
   margin-bottom: 28px;
 }
 
 .missionBody {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 300;
-  line-height: 1.9;
+  line-height: 1.95;
   color: #7a3a4a;
 }
 
 /* ════════════════════════════════════════════════════════════
-   TWO FORMATS
+   FORMAT INTRO STRIP
 ════════════════════════════════════════════════════════════ */
-.formats {
-  padding: 80px 64px;
+.formatsIntro {
+  padding: 64px 64px;
   background: linear-gradient(135deg, var(--blush-light) 0%, var(--blush) 100%);
 }
 
-.formatsInner {
-  max-width: 1100px;
+.formatsIntroInner {
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-.formatsGrid {
+.formatsIntroGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-top: 40px;
+  gap: 20px;
+  margin-top: 32px;
 }
 
-.formatCard {
+.formatIntroCard {
   background: var(--white);
   border-radius: 4px;
-  padding: 44px 40px;
-  border-top: 4px solid var(--crimson);
-  box-shadow: 0 4px 24px rgba(196, 30, 58, 0.07);
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.formatCard:hover {
-  box-shadow: 0 12px 48px rgba(196, 30, 58, 0.14);
-  transform: translateY(-3px);
+  padding: 32px 36px;
+  border-top: 3px solid var(--crimson);
+  box-shadow: 0 4px 20px rgba(196, 30, 58, 0.07);
 }
 
-.formatTag {
+.formatIntroTag {
   display: inline-block;
   font-family: 'Playfair Display', serif;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  padding: 4px 12px;
+  padding: 4px 14px;
   border-radius: 2px;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .tagChill {
@@ -255,98 +263,87 @@
   color: #fff;
 }
 
-.formatTitle {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--crimson);
-  margin-bottom: 16px;
-}
-
-.formatDesc {
+.formatIntroDesc {
   font-size: 14px;
   font-weight: 300;
   line-height: 1.85;
   color: #7a3a4a;
-  margin-bottom: 24px;
-}
-
-.formatTopics {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.formatTopics li {
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--crimson-dark);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.topicDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--crimson);
-  flex-shrink: 0;
 }
 
 /* ════════════════════════════════════════════════════════════
-   EPISODES
+   CONVERSATIONS
 ════════════════════════════════════════════════════════════ */
-.episodes {
+.conversations {
   padding: 80px 64px;
   background: var(--white);
 }
 
-.episodesInner {
+.conversationsInner {
   max-width: 1100px;
   margin: 0 auto;
 }
 
-.episodesTitle {
+.formatBlockHeader {
+  margin-bottom: 36px;
+}
+
+.blockTag {
+  display: inline-block;
   font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 3.5vw, 44px);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 5px 16px;
+  border-radius: 2px;
+  margin-bottom: 14px;
+}
+
+.blockTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3vw, 36px);
   font-weight: 900;
   color: var(--crimson);
-  margin-bottom: 48px;
+  margin-bottom: 10px;
 }
 
-.episodesGrid {
+.blockSubtitle {
+  font-size: 14px;
+  font-weight: 300;
+  color: #7a3a4a;
+  line-height: 1.7;
+  max-width: 620px;
+}
+
+.convoGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  margin-bottom: 16px;
 }
 
-/* Episode card */
-.episodeCard {
+/* Conversation card */
+.convoCard {
   border-radius: 4px;
-  padding: 32px 32px 28px;
+  padding: 30px 28px;
   border-left: 4px solid var(--crimson);
   transition: box-shadow 0.2s, transform 0.2s;
 }
-.episodeCard:hover {
-  box-shadow: 0 8px 32px rgba(196, 30, 58, 0.1);
-  transform: translateY(-2px);
+.convoCard:hover {
+  box-shadow: 0 8px 32px rgba(196, 30, 58, 0.12);
+  transform: translateY(-3px);
 }
 
-.episodeChill  { background: #fff8fa; }
-.episodeChilly { background: #fff0f3; border-left-color: var(--crimson-dark); }
+.convoChill  { background: #fff8fa; }
+.convoChilly { background: #fff0f3; border-left-color: var(--crimson-dark); }
 
-.episodeTop {
+.convoTop {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 14px;
 }
 
-.episodeTag {
+.convoTag {
   font-family: 'Playfair Display', serif;
   font-size: 10px;
   font-weight: 700;
@@ -355,130 +352,34 @@
   border-radius: 2px;
 }
 
-.episodeNumber {
+.convoNumber {
   font-size: 10px;
   letter-spacing: 0.2em;
   color: var(--rose-muted);
   font-weight: 500;
 }
 
-.episodeDuration {
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  color: var(--rose-faint);
-  margin-left: auto;
-}
-
-.episodeTitle {
+.convoTitle {
   font-family: 'Playfair Display', serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--crimson);
-  line-height: 1.35;
-  margin-bottom: 8px;
+  line-height: 1.4;
+  margin-bottom: 12px;
 }
 
-.episodeGuest {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--rose-muted);
-  margin-bottom: 16px;
-  font-style: italic;
-}
-
-.episodeDesc {
+.convoDesc {
   font-size: 13px;
   font-weight: 300;
-  line-height: 1.8;
+  line-height: 1.85;
   color: #7a3a4a;
-  margin-bottom: 16px;
-  animation: descIn 0.25s ease;
 }
 
-@keyframes descIn {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.episodeActions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.playBtn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 20px;
-  background: var(--crimson);
-  color: #fff;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 500;
+/* Divider between ChiLL and ChiLLY blocks */
+.formatDivider {
   border: none;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: background 0.18s;
-  font-family: inherit;
-}
-.playBtn:hover { background: var(--crimson-dark); }
-
-.expandBtn {
-  background: none;
-  border: none;
-  color: var(--rose-muted);
-  font-size: 12px;
-  cursor: pointer;
-  font-family: inherit;
-  letter-spacing: 0.05em;
-  transition: color 0.15s;
-  padding: 0;
-}
-.expandBtn:hover { color: var(--crimson); }
-
-/* ════════════════════════════════════════════════════════════
-   QUOTE BAND
-════════════════════════════════════════════════════════════ */
-.quoteBand {
-  background: var(--crimson-dark);
-  padding: 80px 64px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.quoteBand::before {
-  content: '"';
-  position: absolute;
-  top: -60px;
-  left: 32px;
-  font-family: 'Playfair Display', serif;
-  font-size: 360px;
-  color: rgba(255,255,255,0.04);
-  line-height: 1;
-  pointer-events: none;
-}
-
-.quoteText {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(20px, 2.8vw, 34px);
-  font-style: italic;
-  font-weight: 400;
-  color: #fff;
-  max-width: 700px;
-  margin: 0 auto 20px;
-  line-height: 1.5;
-  position: relative;
-}
-
-.quoteAttr {
-  font-size: 10px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--rose-faint);
-  font-weight: 500;
+  border-top: 1px solid var(--border-strong);
+  margin: 56px 0;
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -546,6 +447,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
 }
 
 .footerLogo {
@@ -570,6 +472,22 @@
 }
 .footerLinks a:hover { color: var(--blush); }
 
+.footerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.footerEmail {
+  font-size: 12px;
+  color: var(--blush-mid);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.footerEmail:hover { color: #fff; }
+
 .footerCopy {
   font-size: 11px;
   color: rgba(212, 112, 138, 0.4);
@@ -580,24 +498,25 @@
    RESPONSIVE
 ════════════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
-  .formatsGrid,
-  .episodesGrid {
+  .formatsIntroGrid,
+  .convoGrid {
     grid-template-columns: 1fr;
   }
 
   .mission,
-  .formats,
-  .episodes,
+  .formatsIntro,
+  .conversations,
   .subscribe {
     padding: 60px 24px;
   }
 
-  .quoteBand { padding: 64px 24px; }
-
   .footer {
     flex-direction: column;
-    gap: 20px;
     text-align: center;
     padding: 40px 24px;
+  }
+
+  .footerRight {
+    align-items: center;
   }
 }

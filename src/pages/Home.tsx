@@ -9,7 +9,7 @@ const Hero = () => (
     <div className={styles.heroLeft}>
       <p className={styles.heroEyebrow}>South Africa · Pan-African Discourse</p>
       <h1 className={styles.heroTitle}>
-        Informing <em>S.A.</em>
+        Informing<br /><em>S.A.</em>
       </h1>
       <p className={styles.heroSubtitle}>Kiss the Mirror</p>
       <p className={styles.heroDesc}>
@@ -124,15 +124,6 @@ const ContentSections = () => (
 
 // ── Quote Band ────────────────────────────────────────────────────────────────
 
-const QuoteBand = () => (
-  <div className={styles.quoteBand}>
-    <blockquote className={styles.quoteText}>
-      "To inform is to empower. To be informed is to be free."
-    </blockquote>
-    <span className={styles.quoteAttr}>— Informing S.A.</span>
-  </div>
-)
-
 // ── Footer ────────────────────────────────────────────────────────────────────
 
 const Footer = () => (
@@ -144,7 +135,12 @@ const Footer = () => (
       <a href="/podcast">Podcast</a>
       <a href="/about#contact">Contact</a>
     </nav>
-    <p className={styles.footerCopy}>© 2025 Informing S.A. · Kiss the Mirror</p>
+    <div className={styles.footerRight}>
+      <a href="mailto:info@informingsa.com" className={styles.footerEmail}>
+        info@informingsa.com
+      </a>
+      <p className={styles.footerCopy}>© 2025 Informing S.A. · Kiss the Mirror</p>
+    </div>
   </footer>
 )
 
@@ -154,7 +150,6 @@ const Home = () => (
   <main>
     <Hero />
     <ContentSections />
-    <QuoteBand />
     <Footer />
   </main>
 )
