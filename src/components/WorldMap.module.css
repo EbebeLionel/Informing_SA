@@ -1,0 +1,232 @@
+.mapContainer {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+}
+
+.mapLabel {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--rose-muted);
+  font-weight: 500;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.mapFrame {
+  position: relative;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--blush-light);
+  aspect-ratio: 16 / 10;
+  cursor: crosshair;
+  box-shadow: 0 8px 32px rgba(196, 30, 58, 0.1);
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #fce4ec;
+}
+
+.country {
+  fill: var(--blush-mid);
+  stroke: var(--white);
+  stroke-width: 0.5;
+  transition: fill 0.15s;
+  cursor: pointer;
+}
+
+.country:hover { fill: var(--crimson); }
+.countryActive { fill: var(--crimson-dark) !important; }
+
+/* Contributor box */
+.contributorBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 240px;
+  max-width: 320px;
+  background: var(--white-glass2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-strong);
+  border-top: 2px solid var(--crimson);
+  border-radius: 8px;
+  padding: 20px 24px;
+  z-index: 20;
+  box-shadow: 0 12px 48px rgba(196, 30, 58, 0.18);
+  animation: boxIn 0.2s ease;
+}
+
+@keyframes boxIn {
+  from { opacity: 0; transform: translate(-50%, -48%) scale(0.96); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+.boxHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.boxCountryName {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--crimson);
+}
+
+.boxClose {
+  width: 24px;
+  height: 24px;
+  background: rgba(196, 30, 58, 0.08);
+  border: none;
+  color: var(--crimson);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.boxClose:hover { background: rgba(196, 30, 58, 0.16); }
+
+.boxSubtitle {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--rose-muted);
+  margin-bottom: 12px;
+}
+
+.contributorList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contributorList li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+.contributorList li:last-child { border-bottom: none; }
+
+.contributorList a {
+  color: var(--crimson);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.15s;
+}
+.contributorList a::before {
+  content: '→';
+  color: var(--rose-muted);
+  font-size: 11px;
+}
+.contributorList a:hover { color: var(--crimson-dark); }
+
+.boxEmpty {
+  font-size: 12px;
+  color: var(--rose-faint);
+  font-style: italic;
+}
+
+.mapHint {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--rose-muted);
+  font-style: italic;
+}
+
+/* ── Tooltip ──────────────────────────────────────────────── */
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--white);
+  color: var(--crimson);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 4px 16px rgba(196, 30, 58, 0.12);
+  white-space: nowrap;
+  z-index: 30;
+  transition: opacity 0.1s;
+}
+
+/* ── Zoom Controls ────────────────────────────────────────── */
+.zoomControls {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 25;
+}
+
+.zoomBtn {
+  width: 30px;
+  height: 30px;
+  background: var(--white);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  color: var(--crimson);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(196, 30, 58, 0.1);
+  transition: background 0.15s, color 0.15s;
+}
+
+.zoomBtn:hover:not(:disabled) {
+  background: var(--crimson);
+  color: var(--white);
+}
+
+.zoomBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ── Contributor button (replaces <a> in box) ─────────────── */
+.contributorBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--crimson);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.15s;
+  cursor: pointer;
+  font-family: inherit;
+}
+.contributorBtn::before {
+  content: '→';
+  color: var(--rose-muted);
+  font-size: 11px;
+}
+.contributorBtn:hover { color: var(--crimson-dark); }

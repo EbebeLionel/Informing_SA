@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Bebas+Neue&display=swap');
+
+/* ── Design tokens ─────────────────────────────────────────── */
+:root {
+  /* Pink palette from screenshot */
+  --blush-light:   #fce4ec;
+  --blush:         #f8bbd0;
+  --blush-mid:     #f48fb1;
+  --blush-deep:    #ec407a;
+  --crimson:       #c41e3a;
+  --crimson-dark:  #a01530;
+  --rose-muted:    #d4708a;
+  --rose-faint:    #bb5b76;
+  --white:         #ffffff;
+  --white-glass:   rgba(255, 255, 255, 0.55);
+  --white-glass2:  rgba(255, 255, 255, 0.75);
+  --border:        rgba(196, 30, 58, 0.15);
+  --border-strong: rgba(196, 30, 58, 0.3);
+  --ink:           #c41e3a;
+  --ink-soft:      #d4708a;
+
+  font-family: 'DM Sans', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: linear-gradient(135deg, var(--blush-light) 0%, var(--blush) 50%, var(--blush-mid) 100%);
+  background-attachment: fixed;
+  color: var(--crimson);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#root { min-height: 100vh; }
+
+a { color: inherit; text-decoration: none; }
+
+button { font-family: inherit; }
