@@ -1,0 +1,238 @@
+/* ── Page ─────────────────────────────────────────────────── */
+.page {
+  min-height: 100vh;
+  padding-top: 72px;
+  background: linear-gradient(135deg, var(--blush-light) 0%, var(--blush) 50%, var(--blush-mid) 100%);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Page header ──────────────────────────────────────────── */
+.pageHeader {
+  width: 100%;
+  max-width: 1400px;
+  padding: 56px 48px 32px;
+}
+
+.pageEyebrow {
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--rose-muted);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.pageTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 900;
+  color: var(--crimson);
+  line-height: 1.15;
+}
+
+/* ── Profile card ─────────────────────────────────────────── */
+.card {
+  width: calc(100% - 96px);
+  max-width: 1400px;
+  margin: 0 48px 64px;
+  background: var(--white);
+  border-radius: 6px;
+  border-top: 3px solid var(--crimson);
+  box-shadow: 0 8px 48px rgba(196, 30, 58, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 38%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ── Info side (left 75%) ─────────────────────────────────── */
+.infoSide {
+  padding: 52px 52px 52px 52px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+}
+
+.founderLabel {
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--rose-muted);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.founderName {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 600;
+  color: var(--crimson);
+  margin-bottom: 24px;
+  line-height: 1.1;
+}
+
+.bio {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: #7a3a4a;
+  margin-bottom: 14px;
+  max-width: 680px;
+}
+
+/* ── Stats grid (4 boxes) ─────────────────────────────────── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.statBox {
+  background: var(--blush-light);
+  border-left: 3px solid var(--crimson);
+  border-radius: 3px;
+  padding: 18px 20px;
+  transition: box-shadow 0.2s;
+}
+
+.statBox:hover {
+  box-shadow: 0 4px 20px rgba(196, 30, 58, 0.1);
+}
+
+.statTitle {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--crimson);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.statPrimary {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--crimson-dark);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.statSub {
+  font-size: 12px;
+  font-weight: 300;
+  color: #9a4a5a;
+  line-height: 1.6;
+}
+
+/* ── Photo side (right 25%) ───────────────────────────────── */
+.photoSide {
+  position: relative;
+  min-height: 500px;
+}
+
+.photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+.footer {
+  width: 100%;
+  background: #1a0810;
+  border-top: 2px solid var(--crimson-dark);
+  padding: 48px 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: auto;
+}
+
+.footerLogo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: #fff;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 24px;
+}
+
+.footerLinks a {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rose-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footerLinks a:hover { color: var(--blush); }
+
+.footerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.footerEmail {
+  font-size: 12px;
+  color: var(--blush-mid);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+.footerEmail:hover { color: #fff; }
+
+.footerCopy {
+  font-size: 11px;
+  color: rgba(212, 112, 138, 0.4);
+  letter-spacing: 0.05em;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .card {
+    grid-template-columns: 1fr;
+    margin: 0 16px 48px;
+  }
+
+  .photoSide {
+    min-height: 360px;
+    order: -1;
+  }
+
+  .infoSide {
+    padding: 36px 28px;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .pageHeader {
+    padding: 40px 24px 24px;
+  }
+
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 24px;
+  }
+
+  .footerRight {
+    align-items: center;
+  }
+}

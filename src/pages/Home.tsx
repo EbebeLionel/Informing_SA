@@ -9,7 +9,7 @@ const Hero = () => (
     <div className={styles.heroLeft}>
       <p className={styles.heroEyebrow}>South Africa · Pan-African Discourse</p>
       <h1 className={styles.heroTitle}>
-        Informing<br /><em>S.A.</em>
+        Informing<em> S.A.</em>
       </h1>
       <p className={styles.heroSubtitle}>Kiss the Mirror</p>
       <p className={styles.heroDesc}>
