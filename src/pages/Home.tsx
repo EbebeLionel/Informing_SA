@@ -7,17 +7,16 @@ import styles from './Home.module.css'
 const Hero = () => (
   <section className={styles.hero}>
     <div className={styles.heroLeft}>
-      <p className={styles.heroEyebrow}>South Africa · Pan-African Discourse</p>
+      <p className={styles.heroEyebrow}>Sex · Intimacy · Interpersonal Relationships</p>
       <h1 className={styles.heroTitle}>
-        Informing<em> S.A.</em>
+        Informing<br /><em>S.A.</em>
       </h1>
       <p className={styles.heroSubtitle}>Kiss the Mirror</p>
       <p className={styles.heroDesc}>
-        A platform for authentic, informed voices across Southern Africa and
-        beyond — connecting contributors, perspectives, and communities through
-        rigorous storytelling and honest reflection.
+        Welcome to Informing S.A., a global organization dedicated to examining
+        sex, intimacy, and interpersonal relationships with rigor and care.
       </p>
-      <a className={styles.heroCta} href="#purpose">
+      <a className={styles.heroCta} href="#mission">
         Explore our mission
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path
@@ -70,10 +69,24 @@ const InfoCard = ({ number, title, id, delay = '0s', children }: InfoCardProps) 
     >
       <div className={styles.cardNumber}>{number}</div>
       <h2 className={styles.cardTitle}>{title}</h2>
-      <p className={styles.cardBody}>{children}</p>
+      <div className={styles.cardBody}>{children}</div>
     </div>
   )
 }
+
+// ── What We Do Card ───────────────────────────────────────────────────────────
+
+interface WwdItemProps {
+  label: string
+  desc: string
+}
+
+const WwdItem = ({ label, desc }: WwdItemProps) => (
+  <div className={styles.wwdItem}>
+    <span className={styles.wwdLabel}>{label}</span>
+    <p className={styles.wwdDesc}>{desc}</p>
+  </div>
+)
 
 // ── Sections ──────────────────────────────────────────────────────────────────
 
@@ -84,45 +97,57 @@ const ContentSections = () => (
     </div>
 
     <div className={styles.threeCol}>
-      <InfoCard number="01" title="Our Purpose" id="purpose" delay="0s">
-        Informing S.A. exists to cut through the noise. In a media landscape
-        saturated with external narratives about Africa, we create space for
-        those who live the story to tell it. Our purpose is to give South
-        Africa — and the wider continent — a mirror it can trust: clear,
-        unflinching, and honest.
-        <br /><br />
-        We believe that informed citizens build stronger societies. Every
-        article, every podcast episode, every contributor profile is a step
-        toward a more self-aware, better-informed public.
+
+      <InfoCard number="01" title="Mission" id="mission" delay="0s">
+        <p>
+          Informing S.A. functions as a transitory institution informing how we approach not only
+          sexual assault but the broader architecture of intimacy, sex and interpersonal relationships.
+        </p>
+        <br />
+        <p>
+          We advance that healthy interpersonal relationships are not ancillary to success but its
+          very root. As such, they warrant rigorous, compassionate inquiry.
+        </p>
       </InfoCard>
 
-      <InfoCard number="02" title="Our Vision" id="vision" delay="0.1s">
-        We envision a Southern Africa where access to quality, locally-grounded
-        information is not a privilege but a right. A continent where the
-        diversity of its people — across language, province, and perspective —
-        is reflected in the media they consume.
-        <br /><br />
-        Informing S.A. aspires to be the connective tissue between African
-        thinkers, writers, and readers worldwide: a network of voices that
-        grows stronger with every contributor who joins the conversation.
+      <InfoCard number="02" title="Vision" id="vision" delay="0.1s">
+        <p>
+          Informing S.A. envisions a society where healthy interpersonal relationships, particularly
+          those involving sex and intimacy, form the foundation of social life, and where individuals
+          are equipped with the knowledge, language, and relational tools to build relationships
+          grounded in trust, consent, accountability, and care.
+        </p>
+        <br />
+        <p>
+          We strive to build a world where people understand sex, intimacy, trauma, and relational
+          responsibility, and where healthier relationships strengthen the home, the workplace, and
+          social institutions, helping individuals and communities move from fracture to function and
+          creating stronger, healthier societies.
+        </p>
       </InfoCard>
 
       <InfoCard number="03" title="What We Do" id="what-we-do" delay="0.2s">
-        We publish long-form articles, opinion pieces, and investigative
-        writing from contributors across Africa and the diaspora. Through our
-        interactive contributor map, readers can discover voices from every
-        corner of the continent.
-        <br /><br />
-        We host <em>The Mirror Sessions</em> — a podcast that goes beyond the
-        headline to examine the forces shaping African society. And we build
-        community: connecting writers, readers, and thinkers who refuse to
-        accept a simplified version of Africa's story.
+        <WwdItem
+          label="Education"
+          desc="Develop sexual relationship curricula that teach consent, trauma-informed intimacy, and the foundations of healthy interpersonal relationships."
+        />
+        <WwdItem
+          label="Information"
+          desc="Translate academic and clinical research on sexual health and relationship dynamics into accessible public knowledge through media and educational platforms."
+        />
+        <WwdItem
+          label="Research"
+          desc="Conduct and synthesize research on sexual health, sexual assault, relational trust, and the social conditions that shape healthy relationships."
+        />
+        <WwdItem
+          label="Dialogue"
+          desc="Facilitate informed conversations with professors, therapists, physicians, and authors to examine intimacy, consent, masculinity, trauma recovery, and relationship repair."
+        />
       </InfoCard>
+
     </div>
   </div>
 )
-
-// ── Quote Band ────────────────────────────────────────────────────────────────
 
 // ── Footer ────────────────────────────────────────────────────────────────────
 
